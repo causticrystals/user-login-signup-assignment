@@ -10,7 +10,7 @@ let userInpLog = document.getElementById("username-inp-login");
 let passInpLog = document.getElementById("password-inp-login");
 
 // Global variables
-let users = [];
+let users = loadUsers();
 
 // SIGN UP BTN CLICKED
 signUpBtn.addEventListener('click', signUpHandler);
