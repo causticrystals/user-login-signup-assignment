@@ -18,12 +18,28 @@ signUpBtn.addEventListener('click', signUpHandler);
 function signUpHandler() {
   let username = {username: userInpSign.value};
   let password = {password: passInpSign.value};
-  // let confirmPass = passInpSign2.value; // add confirmaton later
-  let newUser = Object.assign(username, password);
-  JSON.stringify(newUser);
-  users.push(newUser);
-  alert("Sign up complete");
-  saveUsers();
+  let confirmPass = passInpSign2.value; // add confirmaton later
+
+  // check password and confirm password values
+  if (passInpSign.value === confirmPass) {
+    // check to see if username is in use
+    let newUser = Object.values(username).toString();
+    let testUser = searchUser(newUser);
+    if (testUser === -1) {
+      let newUser = Object.assign(username, password);
+      JSON.stringify(newUser);
+      users.push(newUser);
+      alert("Sign up complete");
+      saveUsers(); 
+    } else {
+      alert("Username is already in use");
+    }
+  } else if (passInpSign.value === "" || confirmPass === ""){
+    alert("One or more input fields are empty");
+  } else {
+    alert("Passwords do not match");
+  }
+
   // clear input elements
   userInpSign.value = "";
   passInpSign.value = "";
@@ -34,7 +50,12 @@ function signUpHandler() {
 signInBtn.addEventListener('click', signInHandler);
 
 function signInHandler() {
-  console.log('Sign In Btn Clicked');
+  for (let i = 0; i < users.length; i++) {
+    if (userInpLog.value === users[i].username && passInpLog.value === users[i].password) {
+      return alert("Login Successful!");
+    }
+  }
+  alert("Invalid Login");
 }
 
 // HELPER FUNCTIONS
