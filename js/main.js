@@ -18,10 +18,9 @@ signUpBtn.addEventListener('click', signUpHandler);
 function signUpHandler() {
   let username = {username: userInpSign.value};
   let password = {password: passInpSign.value};
-  let confirmPass = passInpSign2.value; // add confirmaton later
 
   // check password and confirm password values
-  if (passInpSign.value === confirmPass) {
+  if (passInpSign.value === passInpSign2.value) {
     // check to see if username is in use
     let newUser = Object.values(username).toString();
     let testUser = searchUser(newUser);
@@ -34,7 +33,7 @@ function signUpHandler() {
     } else {
       alert("Username is already in use");
     }
-  } else if (passInpSign.value === "" || confirmPass === ""){
+  } else if (passInpSign.value === "" || passInpSign2.value === ""){
     alert("One or more input fields are empty");
   } else {
     alert("Passwords do not match");
