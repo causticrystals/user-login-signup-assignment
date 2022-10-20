@@ -55,6 +55,10 @@ function signInHandler() {
     }
   }
   alert("Invalid Login");
+
+  // clear input elements
+  userInpLog.value = "";
+  passInpLog.value = "";
 }
 
 // HELPER FUNCTIONS
